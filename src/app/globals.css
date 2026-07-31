@@ -1,26 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #eef2f7;
+  --foreground: #2d3748;
+  
+  /* Neumorphism Shadow Tokens */
+  --nm-outset-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+  --nm-inset-shadow: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
+  --nm-outset-shadow-sm: 4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff;
+  --nm-inset-shadow-sm: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+  --nm-outset-shadow-lg: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+  
+  /* Playful pastels for values 1 to 18 */
+  --pastel-1: #ffb7b2;
+  --pastel-2: #ffdac1;
+  --pastel-3: #e2f0cb;
+  --pastel-4: #b5ead7;
+  --pastel-5: #c7ceea;
+  --pastel-6: #ffc6ff;
+  --pastel-7: #ffd6a5;
+  --pastel-8: #fdffb6;
+  --pastel-9: #caffbf;
+  --pastel-10: #9bf6ff;
+  --pastel-11: #a0c4ff;
+  --pastel-12: #bdb2ff;
+  --pastel-13: #ffc8dd;
+  --pastel-14: #ffafcc;
+  --pastel-15: #bde0fe;
+  --pastel-16: #a2d2ff;
+  --pastel-17: #d8e2dc;
+  --pastel-18: #ffe5ec;
+  --pastel-19: #e8dbfc;
+  --pastel-20: #fce1e4;
+  --pastel-21: #eaf4f4;
+  --pastel-22: #f7ede2;
+  --pastel-23: #fcd5ce;
+  --pastel-24: #ffe5ec;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: 'Nunito', Arial, Helvetica, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Nunito', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Neumorphism Utilities */
+.nm-flat {
+  background: var(--background);
+  box-shadow: var(--nm-outset-shadow);
+  border-radius: 1.5rem;
+}
+
+.nm-flat-sm {
+  background: var(--background);
+  box-shadow: var(--nm-outset-shadow-sm);
+  border-radius: 1rem;
+}
+
+.nm-flat-lg {
+  background: var(--background);
+  box-shadow: var(--nm-outset-shadow-lg);
+  border-radius: 2rem;
+}
+
+.nm-concave {
+  background: var(--background);
+  box-shadow: var(--nm-inset-shadow);
+  border-radius: 1.5rem;
+}
+
+.nm-concave-sm {
+  background: var(--background);
+  box-shadow: var(--nm-inset-shadow-sm);
+  border-radius: 1rem;
+}
+
+/* Playful Hover States */
+.nm-button {
+  background: var(--background);
+  box-shadow: var(--nm-outset-shadow-sm);
+  border-radius: 1rem;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nm-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+}
+
+.nm-button:active {
+  transform: translateY(1px);
+  box-shadow: var(--nm-inset-shadow-sm);
+}
+
+/* Card 3D Flip Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Sparkle & Confetti Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-confetti {
+  animation: float 4s linear infinite;
+}
+
+/* Bubble style decoration for card back */
+.card-back-pattern {
+  background-color: var(--background);
+  background-image: radial-gradient(#d1d9e6 20%, transparent 20%),
+                    radial-gradient(#d1d9e6 20%, transparent 20%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
 }
