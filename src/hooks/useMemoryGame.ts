@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { GAME_THEMES, Theme } from '../utils/themes';
 
 export interface Card {
   id: number;
@@ -44,6 +45,7 @@ const generateBoard = (difficulty: Difficulty): Card[] => {
 
 export const useMemoryGame = () => {
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
+  const [themeId, setThemeId] = useState<string>('animals');
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
   const [moves, setMoves] = useState<number>(0);
@@ -171,6 +173,8 @@ export const useMemoryGame = () => {
     }
   }, [cards, flippedIndices, isGameStarted, isProcessing, isWon]);
 
+  const currentTheme = GAME_THEMES.find((t) => t.id === themeId) || GAME_THEMES[0];
+
   return {
     cards,
     moves,
@@ -181,5 +185,9 @@ export const useMemoryGame = () => {
     isGameStarted,
     difficulty,
     changeDifficulty,
+    themeId,
+    setThemeId,
+    currentTheme,
+    GAME_THEMES,
   };
 };

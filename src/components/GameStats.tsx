@@ -26,17 +26,10 @@ export const GameStats: React.FC<GameStatsProps> = ({
       {/* Timer and Moves Panel Row */}
       <div className="flex flex-1 w-full justify-around sm:justify-start gap-4">
         {/* Timer Panel */}
-        <div
-          className="flex-1 max-w-[180px] p-4 flex flex-col items-center justify-center transition-all duration-300"
-          style={{
-            backgroundColor: '#eef2f7',
-            boxShadow: 'inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff',
-            borderRadius: '1.5rem',
-          }}
-        >
+        <div className="flex-1 max-w-[180px] p-4 flex flex-col items-center justify-center transition-all duration-300 nm-concave-sm backdrop-blur-md border border-white/10">
           <div className="flex items-center gap-1.5 text-slate-400 mb-1">
             <svg
-              className={`w-4 h-4 text-[#bdb2ff] ${isGameStarted ? 'animate-spin' : ''}`}
+              className={`w-4 h-4 text-[#8ec5fc] ${isGameStarted ? 'animate-spin' : ''}`}
               style={{ animationDuration: '6s' }}
               fill="none"
               stroke="currentColor"
@@ -58,17 +51,10 @@ export const GameStats: React.FC<GameStatsProps> = ({
         </div>
 
         {/* Moves Panel */}
-        <div
-          className="flex-1 max-w-[180px] p-4 flex flex-col items-center justify-center transition-all duration-300"
-          style={{
-            backgroundColor: '#eef2f7',
-            boxShadow: 'inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff',
-            borderRadius: '1.5rem',
-          }}
-        >
+        <div className="flex-1 max-w-[180px] p-4 flex flex-col items-center justify-center transition-all duration-300 nm-concave-sm backdrop-blur-md border border-white/10">
           <div className="flex items-center gap-1.5 text-slate-400 mb-1">
             <svg
-              className="w-4 h-4 text-[#ffb7b2]"
+              className="w-4 h-4 text-[#ff9a9e]"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
@@ -92,21 +78,7 @@ export const GameStats: React.FC<GameStatsProps> = ({
       {/* Playful Reset Button */}
       <button
         onClick={resetGame}
-        className="w-full sm:w-auto px-6 py-4 flex items-center justify-center gap-2 text-slate-700 font-extrabold text-base hover:text-rose-500 transition-colors duration-200 active:scale-95"
-        style={{
-          backgroundColor: '#eef2f7',
-          boxShadow: '6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff',
-          borderRadius: '1.25rem',
-        }}
-        onMouseDown={(e) => {
-          e.currentTarget.style.boxShadow = 'inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff';
-        }}
-        onMouseUp={(e) => {
-          e.currentTarget.style.boxShadow = '6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = '6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff';
-        }}
+        className="w-full sm:w-auto px-6 py-4 flex items-center justify-center gap-2 text-slate-700 font-extrabold text-base hover:text-rose-500 transition-all duration-200 active:scale-95 nm-button backdrop-blur-md cursor-pointer"
       >
         <svg
           className="w-5 h-5 text-slate-500 hover:text-rose-500 transition-colors"
